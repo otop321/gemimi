@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Bot, Lock, User, Loader2 } from "lucide-react";
+import { Lock, User, Loader2 } from "lucide-react";
+import Image from "next/image";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -43,10 +44,9 @@ export default function LoginPage() {
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl" />
 
       <div className="relative z-10 w-full max-w-md">
-        {/* Logo / Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-sky-500 to-indigo-500 shadow-lg shadow-sky-500/25 mb-4">
-            <Bot className="w-8 h-8 text-white" />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-slate-900 shadow-lg shadow-sky-500/10 mb-4 overflow-hidden border border-slate-800 p-1">
+            <Image src="/logo.png" alt="Logo" width={64} height={64} className="w-full h-full object-contain" />
           </div>
           <h1 className="text-2xl font-bold text-white">แชทบอท เฉพาะงานสำหรับธุรกิจ</h1>
           <p className="text-slate-400 text-sm mt-1">เข้าสู่ระบบเพื่อใช้งานระบบสืบค้นเอกสาร</p>
