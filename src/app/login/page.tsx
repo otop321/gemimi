@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Lock, User, Loader2 } from "lucide-react";
 import Image from "next/image";
 
@@ -9,6 +9,15 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const usernameRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    // Focus the username input after hydration to avoid mismatch
+    if (usernameRef.current) {
+      usernameRef.current.focus();
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,7 +55,7 @@ export default function LoginPage() {
       <div className="relative z-10 w-full max-w-md">
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-slate-900 shadow-lg shadow-sky-500/10 mb-4 overflow-hidden border border-slate-800 p-1">
-            <Image src="/logo.png" alt="Logo" width={64} height={64} className="w-full h-full object-contain" />
+            <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
           </div>
           <h1 className="text-2xl font-bold text-white">แชทบอท เฉพาะงานสำหรับธุรกิจ</h1>
           <p className="text-slate-400 text-sm mt-1">เข้าสู่ระบบเพื่อใช้งานระบบสืบค้นเอกสาร</p>
@@ -63,13 +72,14 @@ export default function LoginPage() {
               <div className="relative">
                 <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                 <input
+                  ref={usernameRef}
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="กรอกชื่อผู้ใช้"
                   className="w-full bg-slate-800/60 border border-slate-700 rounded-xl pl-11 pr-4 py-3 text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500/50 transition text-sm"
                   required
-                  autoFocus
+                  suppressHydrationWarning
                 />
               </div>
             </div>
@@ -88,6 +98,7 @@ export default function LoginPage() {
                   placeholder="กรอกรหัสผ่าน"
                   className="w-full bg-slate-800/60 border border-slate-700 rounded-xl pl-11 pr-4 py-3 text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500/50 transition text-sm"
                   required
+                  suppressHydrationWarning
                 />
               </div>
             </div>

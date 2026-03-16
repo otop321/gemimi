@@ -193,7 +193,7 @@ export default function Home() {
       <aside className="w-72 border-r border-slate-800 bg-slate-900/60 flex flex-col">
         <div className="p-5 border-b border-slate-800 flex items-center gap-3">
           <div className="w-8 h-8 rounded-lg bg-slate-800 overflow-hidden flex items-center justify-center p-0.5">
-            <Image src="/logo.png" alt="Logo" width={32} height={32} className="w-full h-full object-contain rounded-md" />
+            <img src="/logo.png" alt="Logo" className="w-full h-full object-contain rounded-md" />
           </div>
           <span className="font-bold text-white text-sm">แชทบอทธุรกิจ</span>
         </div>
@@ -236,7 +236,7 @@ export default function Home() {
                     <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center shadow-lg overflow-hidden
                       ${msg.role === "assistant" ? "bg-slate-800 p-1" : "bg-slate-700 text-slate-300"}`}>
                       {msg.role === "assistant" ? (
-                        <Image src="/logo.png" alt="AI" width={28} height={28} className="w-7 h-7 object-contain" />
+                        <img src="/logo.png" alt="AI" className="w-7 h-7 object-contain" />
                       ) : (
                         <User className="w-5 h-5" />
                       )}
