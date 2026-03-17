@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Lock, User, Loader2 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -126,6 +127,14 @@ export default function LoginPage() {
               )}
             </button>
           </form>
+
+          {/* Register Link */}
+          <div className="mt-6 text-center text-sm text-slate-400">
+            ยังไม่มีบัญชีผู้ใช้?{" "}
+            <Link href="/register" className="text-sky-400 hover:text-sky-300 font-medium transition-colors">
+              สมัครสมาชิกที่นี่
+            </Link>
+          </div>
         </div>
 
         {/* Footer */}
