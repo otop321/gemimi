@@ -31,7 +31,9 @@ function loadFromStorage(): ChatSession[] {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return [];
-    return JSON.parse(raw) as ChatSession[];
+    const parsed = JSON.parse(raw);
+    // Guard against corrupted data (non-array)
+    return Array.isArray(parsed) ? (parsed as ChatSession[]) : [];
   } catch {
     return [];
   }

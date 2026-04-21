@@ -19,7 +19,7 @@ function formatDate(ts: number): string {
 }
 
 export default function ConversationList({
-  sessions,
+  sessions = [],
   activeId,
   onNew,
   onSwitch,
